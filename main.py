@@ -25,22 +25,22 @@ name()
 def gender():
     global gend
     gend = input('''Are you:
-    male(m) 
+    male(m)
     female(f)
-    diclose(d)
+    do not want to diclose(d)
     pls provide the replay here:''')
     global female
     female = 'lady'
     if gend == 'male' or gend == 'm':
         print('Thank you Mr ',nam)
-    elif gend == 'female'or gend == 'f':
+    elif gend == 'female' or gend == 'f':
         print('Thank you',female,nam)
-    elif gend == 'diclose' or gend == 'd':
+    elif gend == 'diclose' or gend == 'do not want to diclose'or gend == 'd':
         print('Thank you ',nam,'! We respect your right to not tell us')
     elif gend == ' ' or gend == '':
         print('you have inputed nothing try again')
         gender()
-    elif gend != 'male' or con != 'lady' or gend == 'm' or gend == 'f'or gend == '1'or gend == '2':
+    elif gend != 'male' or con != 'lady':
         print('you have inputed the wrong thing try agin')
         gender()
 
@@ -49,39 +49,21 @@ def gender():
 gender()
 def continues():
     
-    con = input('press E to continue to the game: ')
-    if con == 'e' or con == 'E':
+    gb = input('input E to continue or any anther key to quit the game: ')
+    if gb == 'E' or gb == 'e':
         pass
-    elif con == '' or con == ' ':
-        print('you have inputed nothing try agin')
-        continues()
-    elif con != 'e' or con != 'E':
-        print('you have inputed the wrong thing try agin')
-        continues()
-    print('''
-    ''')
+    else:
+        exit()
 continues()
-now = time.datetime.now()
-hour = now.hour
-
-if hour < 12:
-    print("Good morning")
-elif hour >= 12 and hour <= 18:
-    print("Good afternoon")         
-elif hour > 18 and hour < 19: 
-    print("Good evening")
-else:
-    print('Have a nice night.')
     
-print(gend,' ',nam,'.Welcome to the reverse game')
 
 print('''
 ''')
-maingame = input('''To proced in the game choose an option:
-a.play
-b.lern rools
-''')
 def game():
+    maingame = input('''To proced in the game choose an option:
+    a.play
+    b.lern rules
+    ''')
     if maingame == 'a' or maingame == 'play':
         def main(re):
             return re == re [::-1]
@@ -93,18 +75,29 @@ def game():
             ans = main(re)
 
             if ans:
-                print('you have a point')
+                print(re,'can be reversable.congratulation you have 1 point')
             else:
-                print(re,' cant be reversable tha is no point')
+                print(re,' cant be reversable.you do not have a point')
         main2()
+        gbt = input('input E to go back to the menu of the game or any anther key to quit the game: ')
+        if gbt == 'E' or gbt == 'e':
+            game()
+        else:
+            exit()
     elif maingame =='b' or maingame == 'lern rools':
         print(''' 
         1. Enter word that you think can be read forwards and backwards
         2. if it is correct you will score 1 point.
         3. If it is wrong you get 0 points.''')
+        gb = input('input E to go back to the menu of the game or any anther key to quit the game: ')
+        if gb == 'E' or gb == 'e':
+            game()
+        else:
+            exit()
     elif maingame == '' or maingame == ' ':
         print('you have inputed nothing try again')
         game()
+        
     elif maingame != 'a' or maingame != 'b':
         print('you have inputed the wrong thing try again')
         game()
