@@ -1,6 +1,4 @@
-import datetime as time
-now = time.datetime.now()
-hour = now.hour
+from daterbase import *
 
 if hour < 12:
     print("Good morning")
@@ -14,6 +12,7 @@ else:
 def name():
     global nam
     nam = input('please input your name: ')
+
     if nam == '' or nam == ' ':
         print('you have inputed nothing try again')
         name()
@@ -32,9 +31,9 @@ def gender():
     global female
     female = 'lady'
     if gend == 'male' or gend == 'm':
-        print('Thank you Mr ',nam)
+        print('Thank you ')
     elif gend == 'female' or gend == 'f':
-        print('Thank you',female,nam)
+        print('Thank you')
     elif gend == 'diclose' or gend == 'do not want to diclose'or gend == 'd':
         print('Thank you ',nam,'! We respect your right to not tell us')
     elif gend == ' ' or gend == '':
@@ -68,14 +67,19 @@ def game():
         def main(re):
             return re == re [::-1]
         def main2():
-            re = input('pls input a str to see if it can be reversable: ')
+            re = input('pls input a word to see if it can be reversable: ')
             if re == '' or re == ' ':
                 print('you have inputed nothing try agin')
                 main2()
             ans = main(re)
 
             if ans:
-                print(re,'can be reversable.congratulation you have 1 point')
+                print(re,'can be reversable.congratulation you have gotten 1 point')
+                with conn:
+                    c.execute('INSERT INTO points VALUES(1)')
+                suming = sum(c)
+                print(suming)
+
             else:
                 print(re,' cant be reversable.you do not have a point')
         main2()
@@ -93,6 +97,7 @@ def game():
         if gb == 'E' or gb == 'e':
             game()
         else:
+            print('bye')
             exit()
     elif maingame == '' or maingame == ' ':
         print('you have inputed nothing try again')
