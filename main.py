@@ -77,8 +77,9 @@ def game():
                 print(re,'can be reversable.congratulation you have gotten 1 point')
                 with conn:
                     c.execute('INSERT INTO points VALUES(1)')
-                suming = sum(c)
-                print(suming)
+                nal = [item for a in c for item in a]
+                find_candidate = nal.count(a)
+                print(find_candidate)
 
             else:
                 print(re,' cant be reversable.you do not have a point')
